@@ -9,4 +9,5 @@ Ensure you have the following utilites setup:
 git submodule init
 git submodule update --recursive
 sudo docker-compose up # depending on your system sudo might not be necessary
+sudo docker exec -it html_extractor python3 generateparseorders.py
 ```

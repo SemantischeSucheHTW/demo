@@ -11,3 +11,11 @@ git submodule update --recursive
 sudo docker-compose up # depending on your system sudo might not be necessary
 sudo docker exec -it html_extractor python3 generateparseorders.py
 ```
+The last command will kick off the parsing, extracting and indexing pipeline.
+This will take a while to finish.
+
+The following services are exposed to the host:
+- `mongo-express` on port 9090.
+- `frontend` on port 8080.
+- `rest-search` servicing the frontend on port 8181.
+- `spellchecker` servicing the frontend on port 8282.

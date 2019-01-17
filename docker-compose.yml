@@ -60,7 +60,7 @@ services:
       - words_by_length_updater
     restart: on-failure
     ports:
-      - "8181:8181"
+      - "8282:8282"
 
   rest-search:
     container_name: rest-search
@@ -70,7 +70,7 @@ services:
       - textprocessor
     restart: on-failure
     ports:
-      - "8282:8282"
+      - "8181:8181"
 
   frontend:
     container_name: frontend

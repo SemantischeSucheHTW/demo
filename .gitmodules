@@ -1,0 +1,27 @@
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:SemantischeSucheHTW/frontend.git
+[submodule "html_extractor"]
+	path = html_extractor
+	url = git@github.com:SemantischeSucheHTW/html_extractor.git
+[submodule "indexupdater"]
+	path = indexupdater
+	url = git@github.com:SemantischeSucheHTW/indexupdater.git
+[submodule "mongo"]
+	path = mongo
+	url = git@github.com:SemantischeSucheHTW/mongo.git
+[submodule "mongo-express"]
+	path = mongo-express
+	url = git@github.com:SemantischeSucheHTW/mongo-express.git
+[submodule "rest-search"]
+	path = rest-search
+	url = git@github.com:SemantischeSucheHTW/rest-search.git
+[submodule "spellchecker"]
+	path = spellchecker
+	url = git@github.com:SemantischeSucheHTW/spellchecker.git
+[submodule "textprocessor"]
+	path = textprocessor
+	url = git@github.com:SemantischeSucheHTW/textprocessor.git
+[submodule "words_by_length_updater"]
+	path = words_by_length_updater
+	url = git@github.com:SemantischeSucheHTW/words_by_length_updater.git

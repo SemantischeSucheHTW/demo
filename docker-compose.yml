@@ -1,0 +1,82 @@
+version: '3'
+services:
+  zookeeper:
+    container_name: zookeeper
+    image: zookeeper:3.4
+  kafka:
+    container_name: kafka
+    image: ches/kafka
+    depends_on:
+      - zookeeper
+    environment:
+      ZOOKEEPER_IP: zookeeper
+    restart: on-failure
+
+  mongo:
+    container_name: mongo-db
+    build: ./mongo
+  mongo-express:
+    container_name: mongo-express
+    build: ./mongo-express
+    depends_on:
+      - mongo
+    restart: on-failure
+    ports:
+      - "9090:8081"
+
+  html_extractor:
+    container_name: html_extractor
+    build: ./html_extractor
+    depends_on:
+      - mongo
+      - kafka
+    restart: on-failure
+
+  indexupdater:
+    container_name: indexupdater
+    build: ./indexupdater
+    depends_on:
+      - html_extractor
+    restart: on-failure
+
+  textprocessor:
+    container_name: textprocessor
+    build: ./textprocessor
+    depends_on:
+      - html_extractor
+    restart: on-failure
+
+  words_by_length_updater:
+    container_name: words_by_length_updater
+    build: ./words_by_length_updater
+    depends_on:
+      - textprocessor
+    restart: on-failure
+
+  spellchecker:
+    container_name: spellchecker
+    build: ./spellchecker
+    depends_on:
+      - words_by_length_updater
+    restart: on-failure
+    ports:
+      - "8181:8181"
+
+  rest-search:
+    container_name: rest-search
+    build: ./rest-search
+    depends_on:
+      - indexupdater
+      - textprocessor
+    restart: on-failure
+    ports:
+      - "8282:8282"
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    depends_on:
+      - rest-search
+    restart: on-failure
+    ports:
+      - "8080:8080"

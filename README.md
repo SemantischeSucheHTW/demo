@@ -5,6 +5,9 @@ Ensure you have the following utilites setup:
 - [docker compose](https://docs.docker.com/compose/install/)
 - [git lfs (Large File Storage)](https://git-lfs.github.com/), make sure to have run `git lfs install` after setup.
 
+  `git lfs` is _not_ installed with your standard `git` installation. You'll have to download and install `git lfs`
+  separately.
+
 ```
 git submodule init
 git submodule update --init --recursive
